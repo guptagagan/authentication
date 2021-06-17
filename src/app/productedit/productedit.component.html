@@ -1,0 +1,52 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Product Update - {{currentId}}</h1>
+</div>
+<div class="container">
+    <form [formGroup]="productForm" (ngSubmit) ="updateForm()">
+        <div class="row form-group">
+            <div class="col-lg-6">
+                <label for="">Product Name</label>
+                <input type="text" class="form-control" formControlName="productname" [ngClass]="{'form-error' : productForm.get('productname').touched && productForm.get('productname').invalid}">
+                <span style="color: red;"
+                
+                >Please enter product name</span>
+            </div>
+            <div class="col-lg-6">
+                <label for="">Product Price</label>
+                <input type="text" class="form-control" formControlName="productprice">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-lg-6">
+                <label for="">Manufacturing Date</label>
+                <input type="text" class="form-control" formControlName="manufacturingdate">
+            </div>
+            <div class="col-lg-6">
+                <label for="">Configuration</label>
+                <input type="text" class="form-control" formControlName="configuration">
+            </div>
+            <div class="col-lg-6">
+                <label for="">Type</label>
+                <select class="form-control" formControlName="type">
+                    <option>PC</option>
+                    <option>Mobile</option>
+                    <option>TV</option>
+                </select>
+            </div>
+        </div>
+        <div class="row-form-group">
+            <div class="col-lg-6">
+                <input type="button" [disabled]="!productForm.valid" class="btn btn-primary" value="Update">
+            </div>
+
+        </div>
+    </form>
+
+
+</div>
+
+<!-- To store automatically in angualr -->
+<pre>
+    {{productForm.value | json}}
+    {{productForm.valid}}
+</pre>
